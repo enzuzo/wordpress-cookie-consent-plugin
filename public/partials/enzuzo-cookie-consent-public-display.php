@@ -6,8 +6,6 @@
  * This file is used to markup the public-facing aspects of the plugin.
  *
  * @link       http://www.enzuzo.com
- * @since      1.0.0
- *
  * @package    Enzuzo_Cookie_Consent
  * @subpackage Enzuzo_Cookie_Consent/public/partials
  */

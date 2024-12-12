@@ -4,11 +4,12 @@
  * This file is used to setup a settings section
  *
  * @link       https://www.enzuzo.com
- * @since      1.0.0
- *
  * @package    Enzuzo_Cookie_Consent
  * @subpackage Enzuzo_Cookie_Consent/admin/partials
  */
+ if ( ! defined( 'ABSPATH' ) ) {
+	exit('ABSPATH not defined');
+}
 ?>
 <?php $autoblocking = get_option('enzuzo_cookie_consent_auto_blocking'); ?>
 
