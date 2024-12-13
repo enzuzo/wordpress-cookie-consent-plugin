@@ -14,7 +14,7 @@ class Enzuzo_Cookie_Consent_Public {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   private
 	 * @var      string    $Enzuzo_Cookie_Consent    The ID of this plugin.
 	 */
@@ -23,7 +23,7 @@ class Enzuzo_Cookie_Consent_Public {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -32,7 +32,7 @@ class Enzuzo_Cookie_Consent_Public {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 * @param      string    $Enzuzo_Cookie_Consent       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
@@ -46,7 +46,7 @@ class Enzuzo_Cookie_Consent_Public {
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 */
 	public function public_enqueue_styles() {
 
@@ -67,7 +67,7 @@ class Enzuzo_Cookie_Consent_Public {
 	/**
 	 * Register the JavaScript for the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.1
 	 */
 	public function public_enqueue_scripts() {
 		/**

@@ -4,7 +4,7 @@
  * This file is used to setup a settings section
  *
  * @link       https://www.enzuzo.com
- * @since      1.0.0
+ * @since      1.0.1
  *
  * @package    Enzuzo_Cookie_Consent
  * @subpackage Enzuzo_Cookie_Consent/admin/partials

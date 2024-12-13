@@ -9,19 +9,19 @@
  * that starts the plugin.
  *
  * @link              http://www.enzuzo.com
- * @since             1.0.0
+ * @since             1.0.1
  * @package           Enzuzo_Cookie_Consent
  *
  * @wordpress-plugin
  * Plugin Name:       Enzuzo Cookie Consent | GDPR/CCPA compatible cookie banner
  * Plugin URI:        https://www.enzuzo.com/consent-management-software
  * Description:       Enzuzo Cookie Consent is a cookie consent management that builds trust and keeps you compliant.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Enzuzo Inc.
  * Author URI:        http://www.enzuzo.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       enzuzo-cookie-consent
+ * Text Domain:       cookie-consent-integration
  * Domain Path:       /languages
  */
 
@@ -31,10 +31,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
+ * Start at version 1.0.1 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'enzuzo_cookie_consent_VERSION', '1.0.0' );
+define( 'enzuzo_cookie_consent_VERSION', '1.0.1' );
 
 /**
  * The code that runs during plugin activation.
@@ -59,7 +59,7 @@ register_deactivation_hook( __FILE__, 'deactivate_enzuzo_cookie_consent' );
 
 function enzuzo_cookie_consent_settings_links( $links ) {
     $url = menu_page_url('enzuzo-cookie-consent', false);
-    $link = "<a href='$url'>" . __( 'Settings' ) . '</a>';
+    $link = "<a href='$url'>" . __( 'Settings', 'cookie-consent-integration' ) . '</a>';
 
     array_unshift(
         $links,
@@ -146,7 +146,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-enzuzo-cookie-consent.php'
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.0
+ * @since    1.0.1
  */
 function run_enzuzo_cookie_consent() {
 	$plugin = new enzuzo_cookie_consent();

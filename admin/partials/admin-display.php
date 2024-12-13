@@ -14,21 +14,22 @@
 ?>
 
 <div class="wrap">
-    <h2><?php _e('Enzuzo Cookie Consent', 'enzuzo-cookie-consent'); ?></h2>
-    <p><a href="<?php echo admin_url() ?>/options-general.php?page=enzuzo-cookie-consent&tab=help" class"margin"><?php _e('How to use Enzuzo Cookie Consent', 'enzuzo-cookie-consent'); ?></a></p>
+    <h2><?php esc_attr_e('Enzuzo Cookie Consent', 'cookie-consent-integration'); ?></h2>
+    <p><a href="<?php echo esc_url(admin_url()) ?>/options-general.php?page=enzuzo-cookie-consent&tab=help" class"margin"><?php esc_attr_e('How to use Enzuzo Cookie Consent', 'cookie-consent-integration'); ?></a></p>
 	<h2 class="nav-tab-wrapper">
 		<?php
 	    $tabs = array(
-		    'setup' => __('Setup', 'enzuzo-cookie-consent'),
-		    'preview' => __('Preview', 'enzuzo-cookie-consent'),
-		    'help' => __('Help', 'enzuzo-cookie-consent'),
-		    'about' => __('About', 'enzuzo-cookie-consent')
+		    'setup' => __('Setup', 'cookie-consent-integration'),
+		    'preview' => __('Preview', 'cookie-consent-integration'),
+		    'help' => __('Help', 'cookie-consent-integration'),
+		    'about' => __('About', 'cookie-consent-integration')
 	    );
 	    //set current tab
-	    $tab = ( isset($_GET['tab']) ? $_GET['tab'] : 'setup' );
-	    ?>
+		$nonce = wp_create_nonce('tab_action_nonce');
+	    $tab = ( isset($_GET['tab']) && isset($_GET['nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['nonce'])), 'tab_nonce') ? sanitize_text_field(wp_unslash($_GET['tab'])) : 'setup' );
+		?>
 	    <?php foreach( $tabs as $key => $value ): ?>
-	    	<a class="nav-tab <?php if( $tab == $key ){ echo 'nav-tab-active'; } ?>" href="<?php echo admin_url() ?>options-general.php?page=enzuzo-cookie-consent&tab=<?php echo $key; ?>"><?php echo $value; ?></a>
+			<a class="nav-tab <?php if( $tab == $key ){ echo 'nav-tab-active'; } ?>" href="<?php echo esc_url(admin_url()) ?>options-general.php?page=enzuzo-cookie-consent&tab=<?php echo esc_html($key); ?>&nonce=<?php echo esc_html(wp_create_nonce('tab_nonce')); ?>"><?php echo esc_html($value); ?></a>
 	    <?php endforeach; ?>
 	</h2>
 
