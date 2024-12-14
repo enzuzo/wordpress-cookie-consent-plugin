@@ -15,7 +15,7 @@
  * Plugin Name:       Enzuzo Cookie Consent | GDPR/CCPA compatible cookie banner
  * Plugin URI:        https://www.enzuzo.com/consent-management-software
  * Description:       Enzuzo Cookie Consent is a cookie consent management that builds trust and keeps you compliant.
- * Version:           1.0.4
+ * Version:           1.0.5
  * Author:            Enzuzo Inc.
  * Author URI:        http://www.enzuzo.com/
  * License:           GPL-2.0+
@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit('ABSPATH not defined');
 }
 
-define( 'PLUGIN_VERSION', '1.0.4' );
+define( 'PLUGIN_VERSION', '1.0.5' );
 
 /**
  * The code that runs during plugin activation.
