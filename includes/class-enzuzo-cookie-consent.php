@@ -9,7 +9,6 @@
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      1.0.1
  * @package    Enzuzo_Cookie_Consent
  * @subpackage Enzuzo_Cookie_Consent/includes
  */
@@ -19,7 +18,6 @@ class Enzuzo_Cookie_Consent {
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
-	 * @since    1.0.1
 	 * @access   protected
 	 * @var      Enzuzo_Cookie_Consent_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
@@ -28,7 +26,6 @@ class Enzuzo_Cookie_Consent {
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    1.0.1
 	 * @access   protected
 	 * @var      string    $Enzuzo_Cookie_Consent    The string used to uniquely identify this plugin.
 	 */
@@ -37,7 +34,6 @@ class Enzuzo_Cookie_Consent {
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    1.0.1
 	 * @access   protected
 	 * @var      string    $version    The current version of the plugin.
 	 */
@@ -50,13 +46,12 @@ class Enzuzo_Cookie_Consent {
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    1.0.1
 	 */
 	public function __construct() {
 		if ( defined( 'Enzuzo_Cookie_Consent_VERSION' ) ) {
 			$this->version = Enzuzo_Cookie_Consent_VERSION;
 		} else {
-			$this->version = '1.0.1';
+			$this->version = '1.0.2';
 		}
 		$this->Enzuzo_Cookie_Consent = 'enzuzo-cookie-consent';
 
@@ -80,7 +75,6 @@ class Enzuzo_Cookie_Consent {
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    1.0.1
 	 * @access   private
 	 */
 	private function load_dependencies() {
@@ -118,7 +112,6 @@ class Enzuzo_Cookie_Consent {
 	 * Uses the Enzuzo_Cookie_Consent_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    1.0.1
 	 * @access   private
 	 */
 	private function set_locale() {
@@ -133,7 +126,6 @@ class Enzuzo_Cookie_Consent {
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.1
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
@@ -150,7 +142,6 @@ class Enzuzo_Cookie_Consent {
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
 	 *
-	 * @since    1.0.1
 	 * @access   private
 	 */
 	private function define_public_hooks() {
@@ -164,8 +155,6 @@ class Enzuzo_Cookie_Consent {
 
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
-	 *
-	 * @since    1.0.1
 	 */
 	public function run() {
 		$this->loader->run();
@@ -175,7 +164,6 @@ class Enzuzo_Cookie_Consent {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.0.1
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_Enzuzo_Cookie_Consent() {
@@ -185,7 +173,6 @@ class Enzuzo_Cookie_Consent {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     1.0.1
 	 * @return    Enzuzo_Cookie_Consent_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
@@ -195,7 +182,6 @@ class Enzuzo_Cookie_Consent {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.0.1
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version() {

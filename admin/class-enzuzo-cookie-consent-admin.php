@@ -4,7 +4,6 @@
  * The admin-specific functionality of the plugin.
  *
  * @link       http://www.enzuzo.com
- * @since      1.0.1
  *
  * @package    Enzuzo_Cookie_Consent
  * @subpackage Enzuzo_Cookie_Consent/admin
@@ -14,7 +13,6 @@ class Enzuzo_Cookie_Consent_Admin {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.1
 	 * @access   private
 	 * @var      string    $enzuzo_cookie_consent    The ID of this plugin.
 	 */
@@ -23,7 +21,6 @@ class Enzuzo_Cookie_Consent_Admin {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.0.1
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -32,7 +29,6 @@ class Enzuzo_Cookie_Consent_Admin {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.1
 	 * @param      string    $enzuzo_cookie_consent       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
@@ -45,8 +41,6 @@ class Enzuzo_Cookie_Consent_Admin {
 
 	/**
 	 * Register the stylesheets for the admin area.
-	 *
-	 * @since    1.0.1
 	 */
 	public function admin_enqueue_styles() {
 
@@ -65,8 +59,6 @@ class Enzuzo_Cookie_Consent_Admin {
 
 	/**
 	 * Register the JavaScript for the admin area.
-	 *
-	 * @since    1.0.1
 	 */
 	public function admin_enqueue_scripts() {
 		/**
@@ -143,8 +135,6 @@ class Enzuzo_Cookie_Consent_Admin {
 
     /**
      * Callback function for the admin settings page.
-     *
-     * @since    1.0.1
      */
     public function create_admin_interface() {
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/admin-display.php';
@@ -152,8 +142,6 @@ class Enzuzo_Cookie_Consent_Admin {
 
     /**
 	 * Register the settings page
-	 *
-	 * @since    1.0.1
 	 */
 	public function add_admin_menu() {
 		add_options_page( 'Enzuzo Cookie Consent', 'Enzuzo', 'manage_options', 'enzuzo-cookie-consent', array( $this, 'create_admin_interface' ) );
