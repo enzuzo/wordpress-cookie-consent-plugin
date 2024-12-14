@@ -14,22 +14,22 @@
 ?>
 
 <div class="wrap">
-    <h2><?php esc_attr_e('Enzuzo Cookie Consent', 'cookie-consent-integration'); ?></h2>
-    <p><a href="<?php echo esc_url(admin_url()) ?>/options-general.php?page=enzuzo-cookie-consent&tab=help" class"margin"><?php esc_attr_e('How to use Enzuzo Cookie Consent', 'cookie-consent-integration'); ?></a></p>
+    <h2><?php esc_attr_e('Enzuzo Cookie Consent', PLUGIN_SLUG); ?></h2>
+    <p><a href="<?php echo esc_url(admin_url()) ?>/options-general.php?page=${PLUGIN_SLUG}&tab=help" class"margin"><?php esc_attr_e('How to use Enzuzo Cookie Consent', PLUGIN_SLUG); ?></a></p>
 	<h2 class="nav-tab-wrapper">
 		<?php
 	    $tabs = array(
-		    'setup' => __('Setup', 'cookie-consent-integration'),
-		    'preview' => __('Preview', 'cookie-consent-integration'),
-		    'help' => __('Help', 'cookie-consent-integration'),
-		    'about' => __('About', 'cookie-consent-integration')
+		    'setup' => __('Setup', PLUGIN_SLUG),
+		    'preview' => __('Preview', PLUGIN_SLUG),
+		    'help' => __('Help', PLUGIN_SLUG),
+		    'about' => __('About', PLUGIN_SLUG)
 	    );
 	    //set current tab
 		$nonce = wp_create_nonce('tab_action_nonce');
 	    $tab = ( isset($_GET['tab']) && isset($_GET['nonce']) && wp_verify_nonce(sanitize_text_field(wp_unslash($_GET['nonce'])), 'tab_nonce') ? sanitize_text_field(wp_unslash($_GET['tab'])) : 'setup' );
 		?>
 	    <?php foreach( $tabs as $key => $value ): ?>
-			<a class="nav-tab <?php if( $tab == $key ){ echo 'nav-tab-active'; } ?>" href="<?php echo esc_url(admin_url()) ?>options-general.php?page=enzuzo-cookie-consent&tab=<?php echo esc_html($key); ?>&nonce=<?php echo esc_html(wp_create_nonce('tab_nonce')); ?>"><?php echo esc_html($value); ?></a>
+			<a class="nav-tab <?php if( $tab == $key ){ echo 'nav-tab-active'; } ?>" href="<?php echo esc_url(admin_url()) ?>options-general.php?page=${PLUGIN_SLUG}&tab=<?php echo esc_html($key); ?>&nonce=<?php echo esc_html(wp_create_nonce('tab_nonce')); ?>"><?php echo esc_html($value); ?></a>
 	    <?php endforeach; ?>
 	</h2>
 
@@ -38,7 +38,7 @@
 
             <?php flush_rewrite_rules(); ?>
 		    <form method="post" action="options.php">
-				<?php settings_fields('enzuzo-cookie-consent'); ?>
+				<?php settings_fields(PLUGIN_SLUG); ?>
 				<?php do_settings_sections('enzuzo-cookie-consent'); ?>
 				<?php submit_button('Save Changes'); ?>
 		    </form>

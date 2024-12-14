@@ -18,7 +18,7 @@ class Enzuzo_Cookie_Consent_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'enzuzo-cookie-consent',
+			PLUGIN_SLUG,
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

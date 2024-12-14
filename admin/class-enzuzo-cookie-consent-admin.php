@@ -83,9 +83,9 @@ class Enzuzo_Cookie_Consent_Admin {
 		// The setup section
 		add_settings_section(
 			'enzuzo_cookie_consent_setup_settings_section',
-			__( 'Setup', 'cookie-consent-integration' ),
+			__( 'Setup', PLUGIN_SLUG ),
 			array( $this, 'setup_section_callback_function' ),
-			'enzuzo-cookie-consent'
+			PLUGIN_SLUG
         );
 
         /**
@@ -95,42 +95,42 @@ class Enzuzo_Cookie_Consent_Admin {
         // account UUID
         add_settings_field(
             'enzuzo_cookie_consent_uuid',
-            '<span class="enzuzo-cookie-consent-tooltip" title="' . __( 'Set your installation code snippet or UUID from Enzuzo Dashboard (do not add extra code here - only the UUID will be used)', 'cookie-consent-integration' ) . '">?</span>' . __( 'installation code snippet or account UUID (required):', 'cookie-consent-integration' ),
+            '<span class="enzuzo-cookie-consent-tooltip" title="' . __( 'Set your installation code snippet or UUID from Enzuzo Dashboard (do not add extra code here - only the UUID will be used)', PLUGIN_SLUG ) . '">?</span>' . __( 'installation code snippet or account UUID (required):', PLUGIN_SLUG ),
             array( $this, 'setup_section_callback_uuid_function' ),
-            'enzuzo-cookie-consent',
+            PLUGIN_SLUG,
             'enzuzo_cookie_consent_setup_settings_section'
         );
-        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_uuid' );
+        register_setting( PLUGIN_SLUG, 'enzuzo_cookie_consent_uuid' );
 
         // enabled
         add_settings_field(
             'enzuzo_cookie_consent_enabled',
-            '<span class="enzuzo-cookie-consent-tooltip" title="' . __( 'Enable banner', 'cookie-consent-integration' ) . '">?</span>' . __( 'enable banner:', 'cookie-consent-integration' ),
+            '<span class="enzuzo-cookie-consent-tooltip" title="' . __( 'Enable banner', PLUGIN_SLUG ) . '">?</span>' . __( 'enable banner:', PLUGIN_SLUG ),
             array( $this, 'setup_section_callback_enabled_function' ),
-            'enzuzo-cookie-consent',
+            PLUGIN_SLUG,
             'enzuzo_cookie_consent_setup_settings_section'
         );
-        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_enabled', array( 'type' => 'string', 'default' => 'true' ) );
+        register_setting( PLUGIN_SLUG, 'enzuzo_cookie_consent_enabled', array( 'type' => 'string', 'default' => 'true' ) );
 
         // auto-blocking
         add_settings_field(
             'enzuzo_cookie_consent_auto_blocking',
-            '<span class="enzuzo-cookie-consent-tooltip" title="' . __( 'Script auto-blocking settings', 'cookie-consent-integration' ) . '">?</span>' . __( 'auto blocking:', 'cookie-consent-integration' ),
+            '<span class="enzuzo-cookie-consent-tooltip" title="' . __( 'Script auto-blocking settings', PLUGIN_SLUG ) . '">?</span>' . __( 'auto blocking:', PLUGIN_SLUG ),
             array( $this, 'setup_section_callback_auto_blocking_function' ),
-            'enzuzo-cookie-consent',
+            PLUGIN_SLUG,
             'enzuzo_cookie_consent_setup_settings_section'
         );
-        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_auto_blocking' );
+        register_setting( PLUGIN_SLUG, 'enzuzo_cookie_consent_auto_blocking' );
 
         // prefix-script
         add_settings_field(
             'enzuzo_cookie_consent_prefix_code',
-            '<span class="enzuzo-cookie-consent-tooltip" title="' . __( 'JavaScript code to run before banner', 'cookie-consent-integration' ) . '">?</span>' . __( 'prefix code:', 'cookie-consent-integration' ),
+            '<span class="enzuzo-cookie-consent-tooltip" title="' . __( 'JavaScript code to run before banner', PLUGIN_SLUG ) . '">?</span>' . __( 'prefix code:', PLUGIN_SLUG ),
             array( $this, 'setup_section_callback_prefix_code_function' ),
-            'enzuzo-cookie-consent',
+            PLUGIN_SLUG,
             'enzuzo_cookie_consent_setup_settings_section'
         );
-        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_prefix_code' );
+        register_setting( PLUGIN_SLUG, 'enzuzo_cookie_consent_prefix_code' );
     }
 
     /**
@@ -144,7 +144,7 @@ class Enzuzo_Cookie_Consent_Admin {
 	 * Register the settings page
 	 */
 	public function add_admin_menu() {
-		add_options_page( 'Enzuzo Cookie Consent', 'Enzuzo', 'manage_options', 'enzuzo-cookie-consent', array( $this, 'create_admin_interface' ) );
+		add_options_page( 'Enzuzo Cookie Consent', 'Enzuzo', 'manage_options', PLUGIN_SLUG, array( $this, 'create_admin_interface' ) );
     }
 
     /*

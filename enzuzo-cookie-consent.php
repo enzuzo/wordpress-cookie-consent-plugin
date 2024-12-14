@@ -15,25 +15,21 @@
  * Plugin Name:       Enzuzo Cookie Consent | GDPR/CCPA compatible cookie banner
  * Plugin URI:        https://www.enzuzo.com/consent-management-software
  * Description:       Enzuzo Cookie Consent is a cookie consent management that builds trust and keeps you compliant.
- * Version:           1.0.2
+ * Version:           1.0.3
  * Author:            Enzuzo Inc.
  * Author URI:        http://www.enzuzo.com/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       cookie-consent-integration
+ * Text Domain:       enzuzo-cookie-consent
  * Domain Path:       /languages
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+	exit('ABSPATH not defined');
 }
 
-/**
- * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
- */
-define( 'enzuzo_cookie_consent_VERSION', '1.0.2' );
+define( 'PLUGIN_SLUG', 'enzuzo-cookie-consent' );
+define( 'PLUGIN_VERSION', '1.0.3' );
 
 /**
  * The code that runs during plugin activation.
@@ -57,8 +53,8 @@ register_activation_hook( __FILE__, 'activate_enzuzo_cookie_consent' );
 register_deactivation_hook( __FILE__, 'deactivate_enzuzo_cookie_consent' );
 
 function enzuzo_cookie_consent_settings_links( $links ) {
-    $url = menu_page_url('enzuzo-cookie-consent', false);
-    $link = "<a href='$url'>" . __( 'Settings', 'cookie-consent-integration' ) . '</a>';
+    $url = menu_page_url(PLUGIN_SLUG, false);
+    $link = "<a href='$url'>" . __( 'Settings', PLUGIN_SLUG ) . '</a>';
 
     array_unshift(
         $links,

@@ -48,12 +48,8 @@ class Enzuzo_Cookie_Consent {
 	 *
 	 */
 	public function __construct() {
-		if ( defined( 'Enzuzo_Cookie_Consent_VERSION' ) ) {
-			$this->version = Enzuzo_Cookie_Consent_VERSION;
-		} else {
-			$this->version = '1.0.2';
-		}
-		$this->Enzuzo_Cookie_Consent = 'enzuzo-cookie-consent';
+        $this->version = PLUGIN_VERSION;
+		$this->Enzuzo_Cookie_Consent = PLUGIN_SLUG;
 
 		$this->load_dependencies();
 		$this->set_locale();

@@ -8,7 +8,7 @@
  * @subpackage Enzuzo_Cookie_Consent/admin/partials
  */
 ?>
-<textarea name="enzuzo_cookie_consent_uuid" rows="4" cols="60" placeholder="<?php esc_html_e('Example: ', 'cookie-consent-integration'); ?>
+<textarea name="enzuzo_cookie_consent_uuid" rows="4" cols="60" placeholder="<?php esc_html_e('Example: ', PLUGIN_SLUG); ?>
 Installation code snippet or UUID (looks like aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee) from Enzuzo Admin Dashboard">
 <?php
     $option = get_option('enzuzo_cookie_consent_uuid'); 
