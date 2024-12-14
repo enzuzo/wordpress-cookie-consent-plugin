@@ -1,4 +1,7 @@
+PREFIX=enzuzo-cookie-consent
+VERSION=$(shell git describe --tags --abbrev=0)
+ZIP=${PREFIX}-${VERSION}.zip
 
 release:
-	rm -f ~/plugin.zip
-	git archive --format zip --prefix enzuzo-cookie-consent/ --output ~/plugin.zip main
+	rm -f ${ZIP}
+	git archive --format zip --prefix ${PREFIX}/ --output ~/${ZIP} main
