@@ -2,7 +2,7 @@
 Tags: banner, cookie consent, GDPR, CCPA, privacy
 Requires at least: 3.0.1
 Tested up to: 6.7
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,6 +34,9 @@ Once an account is created, you can find the installation code snippet or UUID u
 [https://app.enzuzo.com/settings/cookiebar/add-to-website](https://app.enzuzo.com/settings/cookiebar/add-to-website)
 
 == Changelog ==
+
+= 1.0.4 =
+* Cosmetic updates
 
 = 1.0.3 =
 * Cosmetic updates

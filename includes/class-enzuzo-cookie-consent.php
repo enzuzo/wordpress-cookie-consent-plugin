@@ -49,7 +49,7 @@ class Enzuzo_Cookie_Consent {
 	 */
 	public function __construct() {
         $this->version = PLUGIN_VERSION;
-		$this->Enzuzo_Cookie_Consent = PLUGIN_SLUG;
+		$this->Enzuzo_Cookie_Consent = 'enzuzo-cookie-consent';
 
 		$this->load_dependencies();
 		$this->set_locale();
