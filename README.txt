@@ -28,7 +28,7 @@ This plugin interfaces with the Enzuzo CMP (Consent Management Platform), which 
 
 The plugin itself does not send any data directly to external services. The CMP service captures user consent data as part of its compliance with consent management requirements.
 
-This service is provided by "Enzuzo Inc.": [Terms of Service](https://www.enzuzo.com/terms-of-service), [Privacy Policy](https://www.enzuzo.com/privacy-policy)
+This plugin and service is provided by "Enzuzo Inc.": [Terms of Service](https://www.enzuzo.com/terms-of-service), [Privacy Policy](https://www.enzuzo.com/privacy-policy)
 
 == Frequently Asked Questions ==
 

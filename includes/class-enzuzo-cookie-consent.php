@@ -63,7 +63,6 @@ class Enzuzo_Cookie_Consent {
 	 * Include the following files that make up the plugin:
 	 *
 	 * - Enzuzo_Cookie_Consent_Loader. Orchestrates the hooks of the plugin.
-	 * - Enzuzo_Cookie_Consent_i18n. Defines internationalization functionality.
 	 * - Enzuzo_Cookie_Consent_Admin. Defines all hooks for the admin area.
 	 * - Enzuzo_Cookie_Consent_Public. Defines all hooks for the public side of the site.
 	 *
@@ -79,12 +78,6 @@ class Enzuzo_Cookie_Consent {
 		 * core plugin.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-enzuzo-cookie-consent-loader.php';
-
-		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-enzuzo-cookie-consent-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
