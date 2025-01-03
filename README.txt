@@ -2,7 +2,7 @@
 Tags: banner, cookie consent, GDPR, CCPA, privacy
 Requires at least: 3.0.1
 Tested up to: 6.7
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,6 +22,14 @@ To install the plugin:
 2. Activate the plugin through the **Plugins** menu in WordPress.
 3. Specify your **installation code snippet** from Enzuzo Dashboard or **account UUID** (looks like `aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee`) and enable the banner in WordPress under **Settings** → **Enzuzo**.
 
+== External services ==
+
+This plugin interfaces with the Enzuzo CMP (Consent Management Platform), which is responsible for managing user consent for cookies and other tracking mechanisms. The plugin integrates with the Enzuzo service to provide cookie consent functionality, such as the cookie banner that prompts users for their consent.
+
+The plugin itself does not send any data directly to external services. The CMP service captures user consent data as part of its compliance with consent management requirements.
+
+This plugin and service is provided by "Enzuzo Inc.": [Terms of Service](https://www.enzuzo.com/terms-of-service), [Privacy Policy](https://www.enzuzo.com/privacy-policy)
+
 == Frequently Asked Questions ==
 
 = Do I need an account to use this plugin? =
@@ -34,6 +42,9 @@ Once an account is created, you can find the installation code snippet or UUID u
 [https://app.enzuzo.com/settings/cookiebar/add-to-website](https://app.enzuzo.com/settings/cookiebar/add-to-website)
 
 == Changelog ==
+
+= 1.0.6 =
+* Resolving issues
 
 = 1.0.5 =
 * rename github link

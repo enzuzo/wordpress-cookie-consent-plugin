@@ -1,3 +1,9 @@
+<?php 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit('ABSPATH not defined');
+}
+?>
+
 <div class="clearfix">
     <div class="enzuzo-cookie-consent-right-col">
         <h3><p><?php enzuzo_cookie_consent_enabled() ? esc_attr_e('The banner is enabled', 'enzuzo-cookie-consent') : esc_attr_e('The banner is disabled', 'enzuzo-cookie-consent'); ?></p></h3>

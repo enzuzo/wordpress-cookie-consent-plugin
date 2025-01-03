@@ -7,6 +7,9 @@
  * @package    Enzuzo_Cookie_Consent
  * @subpackage Enzuzo_Cookie_Consent/admin/partials
  */
+ if ( ! defined( 'ABSPATH' ) ) {
+	exit('ABSPATH not defined');
+}
 ?>
 <?php $autoblocking = get_option('enzuzo_cookie_consent_auto_blocking'); ?>
 
