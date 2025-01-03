@@ -7,6 +7,9 @@
  * @package    Enzuzo_Cookie_Consent
  * @subpackage Enzuzo_Cookie_Consent/admin/partials
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit('ABSPATH not defined');
+}
 ?>
 <?php echo '<p>'.esc_html('Find out more about Enzuzo Cookie Consent ').'<a target="_blank" href="https://www.enzuzo.com/consent-management-software">'.esc_html('here').'</a>.</p>' ?>
 <?php echo '<p>'.esc_html('Don\'t have an account yet?  Create a new account to customize ').'<a target="_blank" href="https://app.enzuzo.com/onboarding">'.esc_html('here').'</a>.</p>' ?>

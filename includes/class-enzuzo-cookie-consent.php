@@ -48,11 +48,10 @@ class Enzuzo_Cookie_Consent {
 	 *
 	 */
 	public function __construct() {
-        $this->version = PLUGIN_VERSION;
+        $this->version = ENZUZO_PLUGIN_VERSION;
 		$this->Enzuzo_Cookie_Consent = 'enzuzo-cookie-consent';
 
 		$this->load_dependencies();
-		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 
@@ -99,22 +98,6 @@ class Enzuzo_Cookie_Consent {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-enzuzo-cookie-consent-public.php';
 
 		$this->loader = new Enzuzo_Cookie_Consent_Loader();
-
-	}
-
-	/**
-	 * Define the locale for this plugin for internationalization.
-	 *
-	 * Uses the Enzuzo_Cookie_Consent_i18n class in order to set the domain and to register the hook
-	 * with WordPress.
-	 *
-	 * @access   private
-	 */
-	private function set_locale() {
-
-		$plugin_i18n = new Enzuzo_Cookie_Consent_i18n();
-
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
 	}
 

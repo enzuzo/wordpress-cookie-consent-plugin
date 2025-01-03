@@ -72,11 +72,7 @@ class Enzuzo_Cookie_Consent_Admin {
 		 */
 
         enzuzo_cookie_consent_enqueue_scripts();
-        wp_add_inline_script(
-            'enzuzo_cookie_consent',
-            '<script>window.__enzuzoConfig = window.__enzuzoConfig ?? {};window.__enzuzoConfig.bannerMode = \'optin\';</script>',
-            'before'
-        );
+        wp_add_inline_script('enzuzo_cookie_consent', '<script>window.__enzuzoConfig = window.__enzuzoConfig ?? {};window.__enzuzoConfig.bannerMode = \'optin\';</script>', 'before');
     }
 
     public function settings_menu_init() {
@@ -100,7 +96,7 @@ class Enzuzo_Cookie_Consent_Admin {
             'enzuzo-cookie-consent',
             'enzuzo_cookie_consent_setup_settings_section'
         );
-        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_uuid' );
+        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_uuid', array( 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ) );
 
         // enabled
         add_settings_field(
@@ -110,7 +106,7 @@ class Enzuzo_Cookie_Consent_Admin {
             'enzuzo-cookie-consent',
             'enzuzo_cookie_consent_setup_settings_section'
         );
-        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_enabled', array( 'type' => 'string', 'default' => 'true' ) );
+        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_enabled', array( 'type' => 'string', 'default' => 'true', 'sanitize_callback' => 'sanitize_text_field' ) );
 
         // auto-blocking
         add_settings_field(
@@ -120,7 +116,7 @@ class Enzuzo_Cookie_Consent_Admin {
             'enzuzo-cookie-consent',
             'enzuzo_cookie_consent_setup_settings_section'
         );
-        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_auto_blocking' );
+        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_auto_blocking', array( 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ) );
 
         // prefix-script
         add_settings_field(
@@ -130,7 +126,7 @@ class Enzuzo_Cookie_Consent_Admin {
             'enzuzo-cookie-consent',
             'enzuzo_cookie_consent_setup_settings_section'
         );
-        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_prefix_code' );
+        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_prefix_code', array( 'type' => 'string', 'sanitize_callback' => 'sanitize_textarea_field' ) );
     }
 
     /**

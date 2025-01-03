@@ -1,3 +1,9 @@
+<?php 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit('ABSPATH not defined');
+}
+?>
+
 <div class="clearfix">
 	<div class="enzuzo-cookie-consent-right-col">
 		<h3><?php esc_html('How to use Enzuzo Cookie Consent'); ?></h3>

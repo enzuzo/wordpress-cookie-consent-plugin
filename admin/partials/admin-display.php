@@ -11,6 +11,9 @@
  * @package    Enzuzo_Cookie_Consent
  * @subpackage Enzuzo_Cookie_Consent/admin/partials
  */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit('ABSPATH not defined');
+}
 ?>
 
 <div class="wrap">
