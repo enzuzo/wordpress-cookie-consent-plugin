@@ -30,6 +30,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 define( 'ENZUZO_PLUGIN_VERSION', '1.0.7' );
 
+add_filter("wp_consent_api_registered_enzuzo", function(){return true;});
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-enzuzo-cookie-consent-activator.php
@@ -78,6 +80,37 @@ function enzuzo_cookie_consent_get_uuid() {
 }
 
 function enzuzo_cookie_consent_enqueue_scripts() {
+    if (get_option('enzuzo_cookie_consent_enable_wp_consent') === '1') {
+    wp_register_script(
+        'enzuzo_wp_consent_callback', 
+        '', 
+        array(), 
+        null, 
+        false
+    );
+
+    // Custom JavaScript code to be added inline before Enzuzo Cookie Consent
+    $enzuzo_wp_consent_callback = '
+        function onSetConsent({ analytics, functional, marketing, preferences }) { 
+            wp_set_consent("functional", functional);
+            wp_set_consent("marketing", marketing);
+            wp_set_consent("preferences", preferences);
+            wp_set_consent("statistics", analytics);
+            wp_set_consent("statistics-anonymous", analytics);
+        };
+        window.__enzuzoConfig = {
+            callbacks: {
+                acceptSelected: onSetConsent,
+                acceptAll: onSetConsent,
+                decline: onSetConsent
+            }
+        };';
+    wp_add_inline_script('enzuzo_wp_consent_callback', $enzuzo_wp_consent_callback, 'before');
+
+    // Enqueue the custom script before the Enzuzo Cookie Consent script
+    wp_enqueue_script('enzuzo_wp_consent_callback');
+}
+    
     $uuid = enzuzo_cookie_consent_get_uuid();
     $script_url = 'https://app.enzuzo.com/scripts/cookiebar';
     if ($uuid) {
