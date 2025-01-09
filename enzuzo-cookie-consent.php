@@ -93,7 +93,7 @@ function enzuzo_cookie_consent_enqueue_scripts() {
 
     $prefix_code = get_option('enzuzo_cookie_consent_prefix_code');
     if ($prefix_code) {
-        wp_add_inline_script('enzuzo_cookie_consent', $prefix_code, 'before');
+        wp_add_inline_script('enzuzo_cookie_consent', esc_js($prefix_code), 'before');
     }
 
     function enzuzo_cookie_consent_add_attributes($tag, $handle) {
