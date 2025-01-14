@@ -80,37 +80,6 @@ function enzuzo_cookie_consent_get_uuid() {
 }
 
 function enzuzo_cookie_consent_enqueue_scripts() {
-    if (get_option('enzuzo_cookie_consent_enable_wp_consent') === '1') {
-    wp_register_script(
-        'enzuzo_wp_consent_callback', 
-        '', 
-        array(), 
-        null, 
-        false
-    );
-
-    // Custom JavaScript code to be added inline before Enzuzo Cookie Consent
-    $enzuzo_wp_consent_callback = '
-        function onSetConsent({ analytics, functional, marketing, preferences }) { 
-            wp_set_consent("functional", functional);
-            wp_set_consent("marketing", marketing);
-            wp_set_consent("preferences", preferences);
-            wp_set_consent("statistics", analytics);
-            wp_set_consent("statistics-anonymous", analytics);
-        };
-        window.__enzuzoConfig = {
-            callbacks: {
-                acceptSelected: onSetConsent,
-                acceptAll: onSetConsent,
-                decline: onSetConsent
-            }
-        };';
-    wp_add_inline_script('enzuzo_wp_consent_callback', $enzuzo_wp_consent_callback, 'before');
-
-    // Enqueue the custom script before the Enzuzo Cookie Consent script
-    wp_enqueue_script('enzuzo_wp_consent_callback');
-}
-    
     $uuid = enzuzo_cookie_consent_get_uuid();
     $script_url = 'https://app.enzuzo.com/scripts/cookiebar';
     if ($uuid) {
@@ -127,6 +96,29 @@ function enzuzo_cookie_consent_enqueue_scripts() {
     $prefix_code = get_option('enzuzo_cookie_consent_prefix_code');
     if ($prefix_code) {
         wp_add_inline_script('enzuzo_cookie_consent', $prefix_code, 'before');
+    }
+
+    if (get_option('enzuzo_cookie_consent_enable_wp_consent')) {
+        $enzuzo_wp_consent_callback = '
+            function onSetConsent({ analytics, functional, marketing, preferences }) { 
+                wp_set_consent("functional", functional);
+                wp_set_consent("marketing", marketing);
+                wp_set_consent("preferences", preferences);
+                wp_set_consent("statistics", analytics);
+                wp_set_consent("statistics-anonymous", analytics);
+            };
+            window.__enzuzoConfig = window.__enzuzoConfig || {};
+            window.__enzuzoConfig.callbacks = window.__enzuzoConfig.callbacks || {};
+            ["acceptSelected", "acceptAll", "decline"].forEach(callbackName => {
+                const oldCallback = window.__enzuzoConfig.callbacks[callbackName];
+                window.__enzuzoConfig.callbacks[callbackName] = function({ analytics, functional, marketing, preferences }) {
+                    onSetConsent({ analytics, functional, marketing, preferences });
+                    if (oldCallback) {
+                        oldCallback({ analytics, functional, marketing, preferences });
+                    }
+                }
+            });';
+        wp_add_inline_script('enzuzo_cookie_consent', $enzuzo_wp_consent_callback, 'before');
     }
 
     function enzuzo_cookie_consent_add_attributes($tag, $handle) {
