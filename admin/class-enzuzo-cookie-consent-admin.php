@@ -126,7 +126,7 @@ class Enzuzo_Cookie_Consent_Admin {
             'enzuzo-cookie-consent',
             'enzuzo_cookie_consent_setup_settings_section'
         );
-        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_enable_wp_consent', array( 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ) );
+        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_enable_wp_consent', array( 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => '1' ) );
 
         // prefix-script
         add_settings_field(
