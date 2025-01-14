@@ -118,6 +118,16 @@ class Enzuzo_Cookie_Consent_Admin {
         );
         register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_auto_blocking', array( 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ) );
 
+        // Add WP Consent integration setting
+        add_settings_field(
+            'enzuzo_cookie_consent_enable_wp_consent',
+            __( 'Enable WP Consent API Integration', 'enzuzo-cookie-consent' ),
+            array( $this, 'setup_section_callback_wp_consent_function' ),
+            'enzuzo-cookie-consent',
+            'enzuzo_cookie_consent_setup_settings_section'
+        );
+        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_enable_wp_consent', array( 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => '1' ) );
+
         // prefix-script
         add_settings_field(
             'enzuzo_cookie_consent_prefix_code',
@@ -164,5 +174,8 @@ class Enzuzo_Cookie_Consent_Admin {
 
     function setup_section_callback_enabled_function() {
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/setup/setup-section-enabled.php';
+    }
+    function setup_section_callback_wp_consent_function() {
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/setup/setup-section-wp-consent.php';
     }
 }
