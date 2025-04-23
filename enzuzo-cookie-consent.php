@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit('ABSPATH not defined');
 }
 
-define( 'ENZUZO_PLUGIN_VERSION', '1.0.6' );
+define( 'ENZUZO_PLUGIN_VERSION', '1.1.0' );
 
 add_filter('wp_consent_api_registered_' . plugin_basename( __FILE__ ), '__return_true');
 
@@ -95,7 +95,7 @@ function enzuzo_cookie_consent_enqueue_scripts() {
 
     $prefix_code = get_option('enzuzo_cookie_consent_prefix_code');
     if ($prefix_code) {
-        wp_add_inline_script('enzuzo_cookie_consent', $prefix_code, 'before');
+        wp_add_inline_script('enzuzo_cookie_consent', esc_js($prefix_code), 'before');
     }
 
     if (get_option('enzuzo_cookie_consent_enable_wp_consent')) {
