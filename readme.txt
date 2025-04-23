@@ -80,4 +80,3 @@ Initial version.
 
 This plugin is loosely based on the excellent **Beautiful Taxonomy Filters** project available at:
 [https://github.com/beautiful-taxonomy-filters/beautiful-taxonomy-filters](https://github.com/beautiful-taxonomy-filters/beautiful-taxonomy-filters).
-
