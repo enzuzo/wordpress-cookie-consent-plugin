@@ -15,7 +15,7 @@
  * Plugin Name:       Enzuzo Cookie Consent | GDPR/CCPA compatible cookie banner
  * Plugin URI:        https://www.enzuzo.com/consent-management-software
  * Description:       Enzuzo Cookie Consent is a cookie consent management that builds trust and keeps you compliant.
- * Version:           1.0.8
+ * Version:           1.1.0
  * Author:            Enzuzo Inc.
  * Author URI:        http://www.enzuzo.com/
  * License:           GPL-2.0+
@@ -28,7 +28,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit('ABSPATH not defined');
 }
 
-define( 'ENZUZO_PLUGIN_VERSION', '1.0.7' );
+define( 'ENZUZO_PLUGIN_VERSION', '1.1.0' );
+
+add_filter('wp_consent_api_registered_' . plugin_basename( __FILE__ ), '__return_true');
 
 /**
  * The code that runs during plugin activation.
@@ -94,6 +96,38 @@ function enzuzo_cookie_consent_enqueue_scripts() {
     $prefix_code = get_option('enzuzo_cookie_consent_prefix_code');
     if ($prefix_code) {
         wp_add_inline_script('enzuzo_cookie_consent', esc_js($prefix_code), 'before');
+    }
+
+    if (get_option('enzuzo_cookie_consent_enable_wp_consent')) {
+        function my_set_consenttype(){
+            return 'optin';
+        }
+        add_filter( 'wp_get_consent_type', 'my_set_consenttype');
+        $enzuzo_wp_consent_callback = '
+            function onSetConsent({ analytics, functional, marketing, preferences }) {
+                const consentMap = {
+                    functional,
+                    marketing,
+                    preferences,
+                    statistics: analytics,
+                    "statistics-anonymous": analytics,
+                };
+                Object.entries(consentMap).forEach(([category, value]) => {
+                    wp_set_consent(category, value ? "allow" : "deny");
+                });
+            }
+            window.__enzuzoConfig = window.__enzuzoConfig || {};
+            window.__enzuzoConfig.callbacks = window.__enzuzoConfig.callbacks || {};
+            ["acceptSelected", "acceptAll", "decline"].forEach(callbackName => {
+                const oldCallback = window.__enzuzoConfig.callbacks[callbackName];
+                window.__enzuzoConfig.callbacks[callbackName] = function({ analytics, functional, marketing, preferences }) {
+                    onSetConsent({ analytics, functional, marketing, preferences });
+                    if (oldCallback) {
+                        oldCallback({ analytics, functional, marketing, preferences });
+                    }
+                }
+            });';
+        wp_add_inline_script('enzuzo_cookie_consent', $enzuzo_wp_consent_callback, 'before');
     }
 
     function enzuzo_cookie_consent_add_attributes($tag, $handle) {

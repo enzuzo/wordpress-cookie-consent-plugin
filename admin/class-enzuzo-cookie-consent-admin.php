@@ -91,7 +91,7 @@ class Enzuzo_Cookie_Consent_Admin {
         // account UUID
         add_settings_field(
             'enzuzo_cookie_consent_uuid',
-            '<span class="enzuzo-cookie-consent-tooltip" title="' . __( 'Set your installation code snippet or UUID from Enzuzo Dashboard (do not add extra code here - only the UUID will be used)', 'enzuzo-cookie-consent' ) . '">?</span>' . __( 'installation code snippet or account UUID (required):', 'enzuzo-cookie-consent' ),
+            '<span class="enzuzo-cookie-consent-tooltip" title="' . __( 'Set your installation code snippet or UUID from Enzuzo Dashboard (do not add extra code here - only the UUID will be used)', 'enzuzo-cookie-consent' ) . '">?</span>' . __( 'Installation code snippet or account UUID (required):', 'enzuzo-cookie-consent' ),
             array( $this, 'setup_section_callback_uuid_function' ),
             'enzuzo-cookie-consent',
             'enzuzo_cookie_consent_setup_settings_section'
@@ -101,7 +101,7 @@ class Enzuzo_Cookie_Consent_Admin {
         // enabled
         add_settings_field(
             'enzuzo_cookie_consent_enabled',
-            '<span class="enzuzo-cookie-consent-tooltip" title="' . __( 'Enable banner', 'enzuzo-cookie-consent' ) . '">?</span>' . __( 'enable banner:', 'enzuzo-cookie-consent' ),
+            '<span class="enzuzo-cookie-consent-tooltip" title="' . __( 'Enable banner', 'enzuzo-cookie-consent' ) . '">?</span>' . __( 'Enable banner:', 'enzuzo-cookie-consent' ),
             array( $this, 'setup_section_callback_enabled_function' ),
             'enzuzo-cookie-consent',
             'enzuzo_cookie_consent_setup_settings_section'
@@ -111,17 +111,27 @@ class Enzuzo_Cookie_Consent_Admin {
         // auto-blocking
         add_settings_field(
             'enzuzo_cookie_consent_auto_blocking',
-            '<span class="enzuzo-cookie-consent-tooltip" title="' . __( 'Script auto-blocking settings', 'enzuzo-cookie-consent' ) . '">?</span>' . __( 'auto blocking:', 'enzuzo-cookie-consent' ),
+            '<span class="enzuzo-cookie-consent-tooltip" title="' . __( 'Script auto-blocking settings', 'enzuzo-cookie-consent' ) . '">?</span>' . __( 'Auto blocking:', 'enzuzo-cookie-consent' ),
             array( $this, 'setup_section_callback_auto_blocking_function' ),
             'enzuzo-cookie-consent',
             'enzuzo_cookie_consent_setup_settings_section'
         );
         register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_auto_blocking', array( 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ) );
 
+        // Add WP Consent integration setting
+        add_settings_field(
+            'enzuzo_cookie_consent_enable_wp_consent',
+            '<span class="enzuzo-cookie-consent-tooltip" title="' . __( 'Install and activate the \'WP Consent API\' plugin, and enable this to standardize the communication of accepted consent categories between plugins', 'enzuzo-cookie-consent' ) . '">?</span>' . __( 'Enable WP Consent API Integration', 'enzuzo-cookie-consent' ),
+            array( $this, 'setup_section_callback_wp_consent_function' ),
+            'enzuzo-cookie-consent',
+            'enzuzo_cookie_consent_setup_settings_section'
+        );
+        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_enable_wp_consent', array( 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field', 'default' => '1' ) );
+
         // prefix-script
         add_settings_field(
             'enzuzo_cookie_consent_prefix_code',
-            '<span class="enzuzo-cookie-consent-tooltip" title="' . __( 'JavaScript code to run before banner', 'enzuzo-cookie-consent' ) . '">?</span>' . __( 'prefix code:', 'enzuzo-cookie-consent' ),
+            '<span class="enzuzo-cookie-consent-tooltip" title="' . __( 'JavaScript code to run before banner', 'enzuzo-cookie-consent' ) . '">?</span>' . __( 'Prefix code:', 'enzuzo-cookie-consent' ),
             array( $this, 'setup_section_callback_prefix_code_function' ),
             'enzuzo-cookie-consent',
             'enzuzo_cookie_consent_setup_settings_section'
@@ -164,5 +174,8 @@ class Enzuzo_Cookie_Consent_Admin {
 
     function setup_section_callback_enabled_function() {
         require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/setup/setup-section-enabled.php';
+    }
+    function setup_section_callback_wp_consent_function() {
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/setup/setup-section-wp-consent.php';
     }
 }

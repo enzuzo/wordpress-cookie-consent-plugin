@@ -1,5 +1,4 @@
-=== Enzuzo Cookie Consent ===
-Contributors: enzuzo
+=== Enzuzo Cookie Consent | GDPR/CCPA compatible cookie banner ===
 Tags: banner, cookie consent, GDPR, CCPA, privacy
 Requires at least: 6.7
 Tested up to: 6.8
@@ -21,7 +20,7 @@ To install the plugin:
 
 1. Upload the content of the plugin to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the **Plugins** menu in WordPress.
-3. Specify your **installation code snippet** from Enzuzo Dashboard or **account UUID** (looks like `aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee`) and enable the banner in WordPress under **Settings** <span aria-hidden="true" class="wp-exclude-emoji"><span aria-hidden="true" class="wp-exclude-emoji"><span aria-hidden="true" class="wp-exclude-emoji"><span aria-hidden="true" class="wp-exclude-emoji"><span aria-hidden="true" class="wp-exclude-emoji"><span aria-hidden="true" class="wp-exclude-emoji"><span aria-hidden="true" class="wp-exclude-emoji"><span aria-hidden="true" class="wp-exclude-emoji"><span aria-hidden="true" class="wp-exclude-emoji">→</span></span></span></span></span></span></span></span></span> **Enzuzo**.
+3. Specify your **installation code snippet** from Enzuzo Dashboard or **account UUID** (looks like `aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee`) and enable the banner in WordPress under **Settings** → **Enzuzo**.
 
 == External services ==
 
