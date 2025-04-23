@@ -1,8 +1,8 @@
 === Enzuzo Cookie Consent | GDPR/CCPA compatible cookie banner ===
 Tags: banner, cookie consent, GDPR, CCPA, privacy
-Requires at least: 3.0.1
-Tested up to: 6.7
-Stable tag: 1.0.6
+Requires at least: 6.7
+Tested up to: 6.8
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,6 +42,15 @@ Once an account is created, you can find the installation code snippet or UUID u
 [https://app.enzuzo.com/settings/cookiebar/add-to-website](https://app.enzuzo.com/settings/cookiebar/add-to-website)
 
 == Changelog ==
+
+= 1.1.0 =
+* Support for WP Consent API
+
+= 1.0.8 =
+* README.txt and assets updates
+
+= 1.0.7 =
+* Resolving issues
 
 = 1.0.6 =
 * Resolving issues
