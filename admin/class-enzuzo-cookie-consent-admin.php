@@ -96,7 +96,7 @@ class Enzuzo_Cookie_Consent_Admin {
             'enzuzo-cookie-consent',
             'enzuzo_cookie_consent_setup_settings_section'
         );
-        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_uuid', array( 'type' => 'string', 'sanitize_callback' => 'sanitize_text_field' ) );
+        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_uuid', array( 'type' => 'string', 'sanitize_callback' => 'enzuzo_passthrough_sanitize' ) );
 
         // enabled
         add_settings_field(
@@ -136,7 +136,7 @@ class Enzuzo_Cookie_Consent_Admin {
             'enzuzo-cookie-consent',
             'enzuzo_cookie_consent_setup_settings_section'
         );
-        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_prefix_code', array( 'type' => 'string', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+        register_setting( 'enzuzo-cookie-consent', 'enzuzo_cookie_consent_prefix_code', array( 'type' => 'string', 'sanitize_callback' => 'enzuzo_passthrough_sanitize' ) );
     }
 
     /**
