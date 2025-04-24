@@ -3,7 +3,7 @@ Contributors: enzuzo
 Tags: banner, cookie consent, GDPR, CCPA, privacy
 Requires at least: 6.7
 Tested up to: 6.8
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,9 @@ Once an account is created, you can find the installation code snippet or UUID u
 [https://app.enzuzo.com/settings/cookiebar/add-to-website](https://app.enzuzo.com/settings/cookiebar/add-to-website)
 
 == Changelog ==
+
+= 1.1.1 =
+* Bug Fixes
 
 = 1.1.0 =
 * Support for WP Consent API
