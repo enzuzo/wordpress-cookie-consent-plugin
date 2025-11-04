@@ -15,7 +15,7 @@
  * Plugin Name:       Enzuzo Cookie Consent
  * Plugin URI:        https://www.enzuzo.com/consent-management-software
  * Description:       Enzuzo Cookie Consent is a cookie consent management that builds trust and keeps you compliant.
- * Version:           1.1.1
+ * Version:           1.1.2
  * Author:            Enzuzo Inc.
  * Author URI:        http://www.enzuzo.com/
  * License:           GPL-2.0+
@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit('ABSPATH not defined');
 }
 
-define( 'ENZUZO_PLUGIN_VERSION', '1.1.1' );
+define( 'ENZUZO_PLUGIN_VERSION', '1.1.2' );
 
 add_filter('wp_consent_api_registered_' . plugin_basename( __FILE__ ), '__return_true');
 
@@ -133,6 +133,7 @@ function enzuzo_cookie_consent_enqueue_scripts() {
                     }
                 });';
             wp_add_inline_script('enzuzo_cookie_consent', $enzuzo_wp_consent_callback, 'before');
+            wp_set_consent( 'functional', 'allow' );
         }
     }
 
