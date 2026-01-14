@@ -8,7 +8,7 @@
  * @subpackage Enzuzo_Cookie_Consent/admin/partials
  */
 
-$enabled = get_option( 'enzuzo_cookie_consent_enable_wp_consent' );
+$enabled = get_option( 'enzuzo_cookie_consent_enable_wp_consent' ) ?: '0';
 ?>
 
 <input

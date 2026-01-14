@@ -44,6 +44,9 @@ Once an account is created, you can find the installation code snippet or UUID u
 
 == Changelog ==
 
+= 1.1.2 =
+* Bug Fixes
+
 = 1.1.1 =
 * Bug Fixes
 
