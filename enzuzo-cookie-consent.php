@@ -70,6 +70,22 @@ function enzuzo_cookie_consent_enabled() {
     return get_option('enzuzo_cookie_consent_enabled', 'true') == 'true';
 }
 
+/**
+ * Declare the consent type to the WP Consent API. Registered at plugin load,
+ * not at wp_enqueue_scripts: with no consent type declared, wp_has_consent()
+ * answers "allowed" for everything, so plugins that set cookies server side
+ * (at init, before headers are sent) and admin-ajax/REST/cron requests would
+ * see consent that was never given.
+ */
+function enzuzo_cookie_consent_consent_type( $consent_type ) {
+    if ( get_option( 'enzuzo_cookie_consent_enable_wp_consent' ) && enzuzo_cookie_consent_enabled() ) {
+        return 'optin';
+    }
+
+    return $consent_type;
+}
+add_filter( 'wp_get_consent_type', 'enzuzo_cookie_consent_consent_type' );
+
 function enzuzo_passthrough_sanitize($input) {
     return $input; // do nothing, just return it
 }
@@ -104,10 +120,6 @@ function enzuzo_cookie_consent_enqueue_scripts() {
 
     if (get_option('enzuzo_cookie_consent_enable_wp_consent')) {
         if ( class_exists( 'WP_CONSENT_API' ) ) {
-            function my_set_consenttype(){
-                return 'optin';
-            }
-            add_filter( 'wp_get_consent_type', 'my_set_consenttype');
             $enzuzo_wp_consent_callback = '
                 function onSetConsent({ analytics, functional, marketing, preferences }) {
                     const consentMap = {
@@ -131,7 +143,29 @@ function enzuzo_cookie_consent_enqueue_scripts() {
                             oldCallback({ analytics, functional, marketing, preferences });
                         }
                     }
-                });';
+                });
+                // Copy saved consent into wp_consent_* cookies on every page
+                // load. Those cookies expire after 30 days, but Enzuzo keeps
+                // consent for 365 days and does not show the banner again, so
+                // returning visitors would otherwise count as "deny". Skip if
+                // nothing was granted (functional does not count, it is true
+                // before any choice) so we never record a choice the visitor
+                // did not make.
+                const oldInit = window.__enzuzoConfig.callbacks.init;
+                window.__enzuzoConfig.callbacks.init = function(consent) {
+                    if (consent && (consent.analytics || consent.marketing || consent.preferences)) {
+                        const replay = () => onSetConsent(consent);
+                        // wp_set_consent loads in the footer and may not exist yet.
+                        if (typeof window.wp_set_consent === "function") {
+                            replay();
+                        } else if (document.readyState === "loading") {
+                            document.addEventListener("DOMContentLoaded", replay);
+                        }
+                    }
+                    if (oldInit) {
+                        oldInit(consent);
+                    }
+                };';
             wp_add_inline_script('enzuzo_cookie_consent', $enzuzo_wp_consent_callback, 'before');
         }
     }
